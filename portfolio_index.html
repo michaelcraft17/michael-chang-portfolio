@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Michael Chang — Portfolio</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Anton&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --teal:      #175d69;
+      --teal-mid:  #1e7d8f;
+      --teal-lt:   #2f93a1;
+      --coral:     #e0846b;
+      --orange:    #f97316;
+      --bg:        #f9fafb;
+      --bg-card:   #ffffff;
+      --text:      #0f1923;
+      --text-sec:  #4b5563;
+      --text-mute: #9ca3af;
+      --border:    #e5e7eb;
+      --shadow:    0 2px 16px rgba(0,0,0,.08);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,.13);
+      --radius:    14px;
+    }
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 62px;
+    }
+    .nav-logo {
+      font-family: 'Anton', sans-serif;
+      font-size: 22px; letter-spacing: .04em;
+      color: var(--teal); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500;
+      color: var(--text-sec); text-decoration: none;
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, var(--teal) 0%, #0e3a42 100%);
+      padding: 100px 32px 90px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      color: rgba(255,255,255,.85);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 6px 18px; border-radius: 99px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(48px, 8vw, 88px);
+      letter-spacing: .02em;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--coral); }
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: rgba(255,255,255,.78);
+      max-width: 580px; margin: 0 auto 36px;
+      font-weight: 400;
+    }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--coral); color: #fff;
+      font-size: 15px; font-weight: 700;
+      padding: 13px 28px; border-radius: 10px;
+      text-decoration: none; transition: opacity .15s;
+    }
+    .btn-primary:hover { opacity: .88; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.3);
+      color: #fff;
+      font-size: 15px; font-weight: 600;
+      padding: 13px 28px; border-radius: 10px;
+      text-decoration: none; transition: background .15s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.2); }
+    .hero-stats {
+      display: flex; gap: 48px; justify-content: center;
+      margin-top: 60px; flex-wrap: wrap;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat .num {
+      font-family: 'Anton', sans-serif;
+      font-size: 38px; color: #fff; display: block;
+    }
+    .hero-stat .lbl {
+      font-size: 12px; font-weight: 500;
+      color: rgba(255,255,255,.55);
+      letter-spacing: .07em; text-transform: uppercase;
+    }
+
+    /* ── SECTION SHELL ───────────────────────────────────── */
+    section { padding: 80px 32px; max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--teal-lt); margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      letter-spacing: .02em; color: var(--text);
+      margin-bottom: 40px;
+    }
+    .divider {
+      border: none; border-top: 1px solid var(--border);
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    /* ── ABOUT ───────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px; align-items: start;
+    }
+    .about-text p { font-size: 16px; color: var(--text-sec); margin-bottom: 16px; line-height: 1.8; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .skill-tag {
+      background: var(--teal); color: #fff;
+      font-size: 12px; font-weight: 600;
+      padding: 5px 14px; border-radius: 99px;
+    }
+    .skill-tag.alt { background: #f0fafb; color: var(--teal); border: 1px solid var(--teal-lt); }
+    .about-highlights { display: flex; flex-direction: column; gap: 16px; }
+    .highlight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      box-shadow: var(--shadow);
+    }
+    .highlight-card .h-icon { font-size: 22px; margin-bottom: 8px; }
+    .highlight-card .h-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-mute); margin-bottom: 4px; }
+    .highlight-card .h-val { font-size: 16px; font-weight: 700; color: var(--text); }
+    .highlight-card .h-sub { font-size: 13px; color: var(--text-sec); margin-top: 2px; }
+
+    /* ── EDUCATION ───────────────────────────────────────── */
+    .edu-grid { display: flex; flex-direction: column; gap: 20px; }
+    .edu-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+    }
+    .edu-card .inst { font-size: 17px; font-weight: 700; color: var(--text); }
+    .edu-card .degree { font-size: 14px; color: var(--text-sec); margin-top: 4px; }
+    .edu-card .gpa {
+      font-family: 'Anton', sans-serif;
+      font-size: 22px; color: var(--teal);
+      text-align: right; white-space: nowrap;
+    }
+    .edu-card .period { font-size: 13px; color: var(--text-mute); text-align: right; }
+    .edu-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+    .edu-pill {
+      background: #f0fafb;
+      border: 1px solid #c8eaf0;
+      color: var(--teal);
+      font-size: 12px; font-weight: 600;
+      padding: 4px 12px; border-radius: 99px;
+    }
+
+    /* ── RESEARCH ────────────────────────────────────────── */
+    .research-grid { display: flex; flex-direction: column; gap: 24px; }
+    .research-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 30px;
+      box-shadow: var(--shadow);
+      position: relative; overflow: hidden;
+    }
+    .research-card::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 4px; background: var(--teal-lt);
+    }
+    .research-card.coral::before { background: var(--coral); }
+    .research-card.orange::before { background: var(--orange); }
+    .research-card .rc-top {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 16px; flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .research-card .rc-org { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--teal-lt); }
+    .research-card.coral .rc-org { color: var(--coral); }
+    .research-card.orange .rc-org { color: var(--orange); }
+    .research-card .rc-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .research-card .rc-period { font-size: 12px; color: var(--text-mute); white-space: nowrap; padding-top: 2px; }
+    .research-card ul { padding-left: 18px; }
+    .research-card ul li { font-size: 14px; color: var(--text-sec); margin-bottom: 7px; line-height: 1.65; }
+
+    /* ── PROJECTS ────────────────────────────────────────── */
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px; }
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 26px;
+      box-shadow: var(--shadow);
+      display: flex; flex-direction: column;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .project-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .project-card .pc-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--teal-lt); margin-bottom: 10px;
+    }
+    .project-card .pc-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .project-card .pc-desc { font-size: 14px; color: var(--text-sec); line-height: 1.7; flex: 1; }
+    .project-card .pc-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 20px; font-size: 13px; font-weight: 700;
+      color: var(--teal); text-decoration: none;
+      transition: color .15s;
+    }
+    .project-card .pc-link:hover { color: var(--coral); }
+
+    /* ── MEDIA PLACEHOLDER ──────────────────────────────── */
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+    .media-slot {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 48px 24px;
+      text-align: center;
+      color: var(--text-mute);
+      background: #fafafa;
+      cursor: default;
+    }
+    .media-slot .ms-icon { font-size: 36px; margin-bottom: 10px; opacity: .5; }
+    .media-slot .ms-label { font-size: 14px; font-weight: 600; color: var(--text-sec); }
+    .media-slot .ms-sub { font-size: 12px; margin-top: 4px; }
+
+    /* ── LEADERSHIP ─────────────────────────────────────── */
+    .leader-grid { display: flex; flex-direction: column; gap: 18px; }
+    .leader-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      box-shadow: var(--shadow);
+      display: flex; gap: 18px; align-items: flex-start;
+    }
+    .leader-icon {
+      width: 46px; height: 46px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-mid));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .leader-card .lc-title { font-size: 16px; font-weight: 700; color: var(--text); }
+    .leader-card .lc-role { font-size: 12px; font-weight: 600; color: var(--teal-lt); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 6px; }
+    .leader-card .lc-desc { font-size: 14px; color: var(--text-sec); line-height: 1.65; }
+
+    /* ── AWARDS ──────────────────────────────────────────── */
+    .awards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .award-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      box-shadow: var(--shadow);
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .award-badge {
+      font-size: 28px; flex-shrink: 0; line-height: 1;
+    }
+    .award-card .aw-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .award-card .aw-desc { font-size: 13px; color: var(--text-sec); line-height: 1.55; }
+
+    /* ── SKILLS ──────────────────────────────────────────── */
+    .skills-section { background: var(--teal); }
+    .skills-section .section-label { color: rgba(255,255,255,.6); }
+    .skills-section .section-title { color: #fff; }
+    .skills-bands { display: flex; flex-direction: column; gap: 22px; }
+    .skills-band { }
+    .skills-band-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 10px; }
+    .skills-band-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-chip {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      color: #fff;
+      font-size: 13px; font-weight: 600;
+      padding: 7px 18px; border-radius: 99px;
+    }
+
+    /* ── CONTACT / FOOTER ───────────────────────────────── */
+    .contact-section {
+      background: #0e3a42;
+      padding: 72px 32px;
+      text-align: center;
+    }
+    .contact-section h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      color: #fff; letter-spacing: .03em;
+      margin-bottom: 14px;
+    }
+    .contact-section p { font-size: 16px; color: rgba(255,255,255,.6); margin-bottom: 32px; }
+    .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      color: #fff; font-size: 14px; font-weight: 600;
+      padding: 12px 24px; border-radius: 10px;
+      text-decoration: none; transition: background .15s;
+    }
+    .contact-link:hover { background: rgba(255,255,255,.18); }
+    footer {
+      background: #07222b;
+      color: rgba(255,255,255,.35);
+      text-align: center;
+      font-size: 12px;
+      padding: 18px 32px;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 720px) {
+      nav { padding: 0 18px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 13px; }
+      section { padding: 56px 18px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .edu-card { grid-template-columns: 1fr; }
+      .edu-card .gpa, .edu-card .period { text-align: left; }
+      .contact-section { padding: 56px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────────── -->
+<nav>
+  <a class="nav-logo" href="#top">MC</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#research">Research</a>
+    <a href="#projects">Projects</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#awards">Awards</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────── -->
+<div id="top" class="hero">
+  <div class="hero-tag">Computer Science · AI Research · Community Tech</div>
+  <h1>Michael <span>Chang</span></h1>
+  <p class="hero-sub">A coding geek building AI tools that make communities more accessible.</p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn-primary">View Projects ↓</a>
+    <a href="https://github.com/michaelcraft17" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.936.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+      GitHub
+    </a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="num">4.82</span><span class="lbl">Weighted GPA</span></div>
+    <div class="hero-stat"><span class="num">1530</span><span class="lbl">SAT Score</span></div>
+    <div class="hero-stat"><span class="num">3×</span><span class="lbl">University Research</span></div>
+    <div class="hero-stat"><span class="num">501c3</span><span class="lbl">Non-Profit Founder</span></div>
+  </div>
+</div>
+
+<!-- ── ABOUT ─────────────────────────────────────────────── -->
+<section id="about">
+  <div class="section-label">Who I Am</div>
+  <div class="section-title">Student. Researcher. Builder.</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a high school student at BASIS Independent Silicon Valley with a deep passion for AI, robotics, and technology that creates real-world impact. From training computer vision models on a Raspberry Pi to building autonomous soccer robots, I pursue research that pushes what's possible.</p>
+      <p>Outside the lab, I've founded a 501(c)(3) non-profit — Code for Community — deploying student engineers to solve problems for underserved communities. I believe the best code is code that genuinely helps people.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">C++</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">TensorFlow</span>
+        <span class="skill-tag">OpenCV</span>
+        <span class="skill-tag alt">Machine Learning</span>
+        <span class="skill-tag alt">SLAM</span>
+        <span class="skill-tag alt">Embedded Systems</span>
+        <span class="skill-tag alt">AI Research</span>
+      </div>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-card">
+        <div class="h-icon">🏫</div>
+        <div class="h-label">Current School</div>
+        <div class="h-val">BASIS Independent Silicon Valley</div>
+        <div class="h-sub">Expected Graduation: May 2027</div>
+      </div>
+      <div class="highlight-card">
+        <div class="h-icon">🏆</div>
+        <div class="h-label">Top Achievement</div>
+        <div class="h-val">USACO Gold</div>
+        <div class="h-sub">Competitive programming — top national tier</div>
+      </div>
+      <div class="highlight-card">
+        <div class="h-icon">🌐</div>
+        <div class="h-label">Featured Project</div>
+        <div class="h-val">autismcommunityorg.org</div>
+        <div class="h-sub">AI-powered accessibility mapper, 976+ resources</div>
+      </div>
+      <div class="highlight-card">
+        <div class="h-icon">🏛️</div>
+        <div class="h-label">Non-Profit</div>
+        <div class="h-val">Code for Community</div>
+        <div class="h-sub">Registered 501(c)(3) — Founder & President</div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider"/>
+
+<!-- ── EDUCATION ─────────────────────────────────────────── -->
+<section id="education">
+  <div class="section-label">Academic Background</div>
+  <div class="section-title">Education</div>
+  <div class="edu-grid">
+
+    <div class="edu-card">
+      <div>
+        <div class="inst">BASIS Independent Silicon Valley</div>
+        <div class="degree">High School Diploma · AP Scholar with Distinction · SAT 1530</div>
+        <div class="edu-pills">
+          <span class="edu-pill">GPA 3.9 UW / 4.82 W</span>
+          <span class="edu-pill">SAT Math 790</span>
+          <span class="edu-pill">SAT R&W 740</span>
+        </div>
+      </div>
+      <div>
+        <div class="gpa">4.82</div>
+        <div class="period">Expected May 2027</div>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div>
+        <div class="inst">California Science & Technology University (CSTU)</div>
+        <div class="degree">University Coursework — Graduate Level</div>
+        <div class="edu-pills">
+          <span class="edu-pill">CSE645 — SLAM & Autonomous Navigation</span>
+          <span class="edu-pill">CSE642 — Agentic AI with Openclaw</span>
+          <span class="edu-pill">4.0 GPA</span>
+        </div>
+      </div>
+      <div>
+        <div class="gpa">4.0</div>
+        <div class="period">Summer 2026</div>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div>
+        <div class="inst">California State Polytechnic University, Pomona</div>
+        <div class="degree">University Coursework</div>
+        <div class="edu-pills">
+          <span class="edu-pill">CS 2400 — Data Structures & Advanced Programming</span>
+          <span class="edu-pill">4.0 GPA · Grade A</span>
+        </div>
+      </div>
+      <div>
+        <div class="gpa">4.0</div>
+        <div class="period">Summer 2025</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<hr class="divider"/>
+
+<!-- ── RESEARCH ───────────────────────────────────────────── -->
+<section id="research">
+  <div class="section-label">Academic Work</div>
+  <div class="section-title">Research Experience</div>
+  <div class="research-grid">
+
+    <div class="research-card">
+      <div class="rc-top">
+        <div>
+          <div class="rc-org">Cal Poly Pomona · SoftCom Lab</div>
+          <div class="rc-title">Computer Vision & Autonomous Robotics</div>
+        </div>
+        <div class="rc-period">Summer 2024 – Present</div>
+      </div>
+      <ul>
+        <li>Developed a real-time tennis ball detection system on Raspberry Pi 4 using a custom-trained TensorFlow Lite CNN model, achieving mAP approaching 0.99 across 100+ training epochs.</li>
+        <li>Curated and annotated a domain-specific image dataset under varied lighting and occlusion; diagnosed training instability through loss function analysis and hyperparameter tuning.</li>
+        <li>Engineered a multi-modal sensor pipeline — camera, ultrasonic sonar, infrared — for robust obstacle detection and path-planning on an autonomous mobile chassis.</li>
+        <li>Benchmarked against YOLO, Faster R-CNN, and SSD; documented trade-offs in speed, accuracy, and domain generalizability.</li>
+      </ul>
+    </div>
+
+    <div class="research-card coral">
+      <div class="rc-top">
+        <div>
+          <div class="rc-org">California Science & Technology University</div>
+          <div class="rc-title">SLAM & Autonomous Bipedal Soccer Robot</div>
+        </div>
+        <div class="rc-period">Summer 2026</div>
+      </div>
+      <ul>
+        <li>Designed and implemented an autonomous bipedal soccer robot using a micro:bit V2 microcontroller and XIAO ESP32S3 Sense vision coprocessor.</li>
+        <li>Integrated a mounted camera on the RobotPu platform to detect soccer balls and goal posts, enabling autonomous navigation, alignment, and kicking.</li>
+        <li>Developed a full perception-planning-action pipeline with I2C sensor fusion, Kalman filtering, a viewpoint pose controller, and a finite state machine.</li>
+      </ul>
+    </div>
+
+    <div class="research-card orange">
+      <div class="rc-top">
+        <div>
+          <div class="rc-org">Harvard University</div>
+          <div class="rc-title">Smart Elder Care Monitoring Initiative</div>
+        </div>
+        <div class="rc-period">June 2025 – Present</div>
+      </div>
+      <ul>
+        <li>Contributed to a privacy-preserving smart elder care monitoring system aimed at improving caregiver awareness while protecting residents' dignity.</li>
+        <li>Evaluated sensing technologies for non-invasive activity monitoring, focusing on fall detection, caregiver coordination, and operational feasibility.</li>
+        <li>Collaborated with clinicians, engineers, and senior care professionals on privacy, ethics, and institutional deployment.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+<hr class="divider"/>
+
+<!-- ── PROJECTS ───────────────────────────────────────────── -->
+<section id="projects">
+  <div class="section-label">What I've Built</div>
+  <div class="section-title">Projects</div>
+  <div class="project-grid">
+
+    <div class="project-card">
+      <div class="pc-label">🧩 Accessibility · AI · Web App</div>
+      <div class="pc-title">Autism Community Resources Mapper</div>
+      <div class="pc-desc">AI-assisted web application mapping 976+ community resources for individuals with autism. Built with React, features interactive search, category filtering, and a live resource database. Part of the Stanford Medicine REACH project collaboration.</div>
+      <a class="pc-link" href="https://autismcommunityorg.org/" target="_blank" rel="noopener noreferrer">Visit Live Site ↗</a>
+    </div>
+
+    <div class="project-card">
+      <div class="pc-label">🤖 ML · Embedded · Computer Vision</div>
+      <div class="pc-title">Real-Time Object Detection on Raspberry Pi</div>
+      <div class="pc-desc">Custom-trained TensorFlow Lite CNN for tennis ball detection on a Raspberry Pi 4. Integrated with OpenCV for real-time inference, achieving mAP scores approaching 0.99. Part of the SoftCom Lab research pipeline.</div>
+      <a class="pc-link" href="https://github.com/michaelcraft17" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+    </div>
+
+    <div class="project-card">
+      <div class="pc-label">⚽ Robotics · SLAM · Embedded</div>
+      <div class="pc-title">Autonomous Bipedal Soccer Robot</div>
+      <div class="pc-desc">Full-stack autonomous robot system built with micro:bit V2 and ESP32S3. Implements a complete perception-planning-action pipeline with Kalman filtering, pose control, and FSM-driven ball tracking and kicking execution.</div>
+      <a class="pc-link" href="https://github.com/michaelcraft17" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+    </div>
+
+    <div class="project-card">
+      <div class="pc-label">🎓 Generative AI · Education</div>
+      <div class="pc-title">AI Curriculum — Jeffrey Trail Middle School</div>
+      <div class="pc-desc">Designed and delivered a comprehensive Generative AI and Python curriculum for 60+ students at a summer camp. Led daily instruction, iterative prompt engineering workshops, and hands-on technical troubleshooting sessions.</div>
+      <a class="pc-link" href="#contact">Get in touch ↗</a>
+    </div>
+
+  </div>
+
+  <!-- Media placeholder section -->
+  <div style="margin-top:48px;">
+    <div class="section-label" style="margin-bottom:10px;">Demo Reel & Gallery</div>
+    <p style="font-size:14px;color:var(--text-mute);margin-bottom:22px;">Videos and images coming soon — drop files into the repo to populate these slots.</p>
+    <div class="media-grid">
+      <div class="media-slot">
+        <div class="ms-icon">🎬</div>
+        <div class="ms-label">Project Demo Video</div>
+        <div class="ms-sub">Add video here</div>
+      </div>
+      <div class="media-slot">
+        <div class="ms-icon">📸</div>
+        <div class="ms-label">Robot Build Photos</div>
+        <div class="ms-sub">Add images here</div>
+      </div>
+      <div class="media-slot">
+        <div class="ms-icon">📊</div>
+        <div class="ms-label">Research Poster / Slides</div>
+        <div class="ms-sub">Add PDF or image here</div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider"/>
+
+<!-- ── LEADERSHIP ─────────────────────────────────────────── -->
+<section id="leadership">
+  <div class="section-label">Impact Beyond Code</div>
+  <div class="section-title">Leadership</div>
+  <div class="leader-grid">
+
+    <div class="leader-card">
+      <div class="leader-icon">🏛️</div>
+      <div>
+        <div class="lc-role">Founder & President · June 2026 – Present</div>
+        <div class="lc-title">Code for Community — 501(c)(3) Non-Profit</div>
+        <div class="lc-desc">Established a fully recognized, youth-led federal non-profit focused on harnessing computer science to serve underserved communities. Directs educational workflows and custom software projects, coordinating volunteer engineering cohorts across multi-school chapters.</div>
+      </div>
+    </div>
+
+    <div class="leader-card">
+      <div class="leader-icon">💼</div>
+      <div>
+        <div class="lc-role">Founder & Team Coach</div>
+        <div class="lc-title">High School Diamond Challenge Club</div>
+        <div class="lc-desc">Pioneered the school's premier business and entrepreneurship incubator club. Established training tracks in startup metrics, financial forecasting, and pitch delivery for student teams competing in regional entrepreneurship competitions.</div>
+      </div>
+    </div>
+
+    <div class="leader-card">
+      <div class="leader-icon">🎾</div>
+      <div>
+        <div class="lc-role">Founding Member</div>
+        <div class="lc-title">High School Tennis Team</div>
+        <div class="lc-desc">One of the founding members of the school's competitive tennis team, building the program from the ground up alongside peers and coaches.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<hr class="divider"/>
+
+<!-- ── AWARDS ────────────────────────────────────────────── -->
+<section id="awards">
+  <div class="section-label">Recognition</div>
+  <div class="section-title">Honors & Awards</div>
+  <div class="awards-grid">
+
+    <div class="award-card">
+      <div class="award-badge">🥇</div>
+      <div>
+        <div class="aw-title">USACO Gold</div>
+        <div class="aw-desc">USA Computing Olympiad — Gold division, representing top-tier competitive programming nationally.</div>
+      </div>
+    </div>
+
+    <div class="award-card">
+      <div class="award-badge">🏆</div>
+      <div>
+        <div class="aw-title">1st Place — Ignite CS Programming Expo</div>
+        <div class="aw-desc">First place winner, organized exhibition for scalable engineering solutions. September 2025.</div>
+      </div>
+    </div>
+
+    <div class="award-card">
+      <div class="award-badge">🇺🇸</div>
+      <div>
+        <div class="aw-title">Congressional Volunteer Award — Gold</div>
+        <div class="aw-desc">Awarded by the U.S. Congress for outstanding community service and volunteer contributions.</div>
+      </div>
+    </div>
+
+    <div class="award-card">
+      <div class="award-badge">📚</div>
+      <div>
+        <div class="aw-title">AP Scholar with Distinction</div>
+        <div class="aw-desc">Granted by the College Board for exceptional performance across multiple AP examinations.</div>
+      </div>
+    </div>
+
+    <div class="award-card">
+      <div class="award-badge">🤖</div>
+      <div>
+        <div class="aw-title">FCSN Tech-for-Good Initiative</div>
+        <div class="aw-desc">Led teams to develop custom computing curricula for autistic children at Friends of Children with Special Needs, Fremont CA. 2026–Present.</div>
+      </div>
+    </div>
+
+    <div class="award-card">
+      <div class="award-badge">🎓</div>
+      <div>
+        <div class="aw-title">Generative AI Summer Camp Instructor</div>
+        <div class="aw-desc">Pioneered an intensive Generative AI & Python curriculum for 60+ students at Jeffrey Trail Middle School (155 Visions, Irvine CA). Summer 2025.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── SKILLS ────────────────────────────────────────────── -->
+<div class="skills-section">
+  <section style="max-width:1100px;padding:72px 32px;">
+    <div class="section-label">Technical Toolkit</div>
+    <div class="section-title">Skills</div>
+    <div class="skills-bands">
+      <div class="skills-band">
+        <div class="skills-band-label">Programming Languages</div>
+        <div class="skills-band-tags">
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">C++</span>
+          <span class="skill-chip">Java</span>
+          <span class="skill-chip">JavaScript</span>
+          <span class="skill-chip">HTML / CSS</span>
+          <span class="skill-chip">Swift</span>
+        </div>
+      </div>
+      <div class="skills-band">
+        <div class="skills-band-label">AI / ML Frameworks</div>
+        <div class="skills-band-tags">
+          <span class="skill-chip">TensorFlow Lite</span>
+          <span class="skill-chip">YOLOv5/v8</span>
+          <span class="skill-chip">OpenCV</span>
+          <span class="skill-chip">Deep Learning</span>
+          <span class="skill-chip">Agentic AI</span>
+          <span class="skill-chip">Prompt Engineering</span>
+        </div>
+      </div>
+      <div class="skills-band">
+        <div class="skills-band-label">Hardware & Robotics</div>
+        <div class="skills-band-tags">
+          <span class="skill-chip">Raspberry Pi 4</span>
+          <span class="skill-chip">micro:bit V2</span>
+          <span class="skill-chip">ESP32S3</span>
+          <span class="skill-chip">I2C / Sensor Fusion</span>
+          <span class="skill-chip">Kalman Filtering</span>
+          <span class="skill-chip">SLAM</span>
+        </div>
+      </div>
+      <div class="skills-band">
+        <div class="skills-band-label">Creative & Other Tools</div>
+        <div class="skills-band-tags">
+          <span class="skill-chip">DaVinci Resolve</span>
+          <span class="skill-chip">Non-linear Post-production</span>
+          <span class="skill-chip">Audio Engineering</span>
+          <span class="skill-chip">React</span>
+          <span class="skill-chip">GitHub Pages</span>
+          <span class="skill-chip">Node.js</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ── CONTACT ───────────────────────────────────────────── -->
+<div id="contact" class="contact-section">
+  <h2>Let's Connect</h2>
+  <p>Researcher, builder, and founder — always open to collaboration.</p>
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:changcheng875@gmail.com">
+      ✉️ changcheng875@gmail.com
+    </a>
+    <a class="contact-link" href="https://github.com/michaelcraft17" target="_blank" rel="noopener noreferrer">
+      <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.936.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+      GitHub
+    </a>
+    <a class="contact-link" href="https://autismcommunityorg.org/" target="_blank" rel="noopener noreferrer">
+      🌐 autismcommunityorg.org
+    </a>
+  </div>
+</div>
+<footer>© 2026 Michael Chang · Built with HTML/CSS · Hosted on GitHub Pages</footer>
+
+</body>
+</html>
