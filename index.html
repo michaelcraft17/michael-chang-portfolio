@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Michael Chang — Portfolio</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="icon" type="image/svg+xml" href="portfolio_favicon.svg"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Anton&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -255,6 +255,7 @@
       transition: color .15s;
     }
     .project-card .pc-link:hover { color: var(--coral); }
+    .project-card .pc-link + .pc-link { margin-left: 18px; }
 
     /* ── MEDIA PLACEHOLDER ──────────────────────────────── */
     .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
@@ -441,7 +442,7 @@
         <div class="h-icon">🌐</div>
         <div class="h-label">Featured Project</div>
         <div class="h-val">autismcommunityorg.org</div>
-        <div class="h-sub">AI-powered accessibility mapper, 976+ resources</div>
+        <div class="h-sub">Verified accessibility mapper, 142,000+ resources</div>
       </div>
       <div class="highlight-card">
         <div class="h-icon">🏛️</div>
@@ -576,22 +577,37 @@
     <div class="project-card">
       <div class="pc-label">🧩 Accessibility · AI · Web App</div>
       <div class="pc-title">Autism Community Resources Mapper</div>
-      <div class="pc-desc">AI-assisted web application mapping 976+ community resources for individuals with autism. Built with React, features interactive search, category filtering, and a live resource database. Part of the Stanford Medicine REACH project collaboration.</div>
+      <div class="pc-desc">Free, interactive directory of 142,000+ autism and special-needs resources across 30+ countries. Every listing comes from an official registry or verified organization, never unverified user submissions. Built with JavaScript and Python data pipelines, with search, category filtering and a live map. Part of the Stanford Medicine REACH project collaboration.</div>
       <a class="pc-link" href="https://autismcommunityorg.org/" target="_blank" rel="noopener noreferrer">Visit Live Site ↗</a>
+      <a class="pc-link" href="https://github.com/michaelcraft17/autism-community-resources" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
     </div>
 
     <div class="project-card">
       <div class="pc-label">🤖 ML · Embedded · Computer Vision</div>
       <div class="pc-title">Real-Time Object Detection on Raspberry Pi</div>
       <div class="pc-desc">Custom-trained TensorFlow Lite CNN for tennis ball detection on a Raspberry Pi 4. Integrated with OpenCV for real-time inference, achieving mAP scores approaching 0.99. Part of the SoftCom Lab research pipeline.</div>
-      <a class="pc-link" href="https://github.com/michaelcraft17" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+      <a class="pc-link" href="https://github.com/michaelcraft17/tennis_recovery_robot" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
     </div>
 
     <div class="project-card">
       <div class="pc-label">⚽ Robotics · SLAM · Embedded</div>
       <div class="pc-title">Autonomous Bipedal Soccer Robot</div>
       <div class="pc-desc">Full-stack autonomous robot system built with micro:bit V2 and ESP32S3. Implements a complete perception-planning-action pipeline with Kalman filtering, pose control, and FSM-driven ball tracking and kicking execution.</div>
-      <a class="pc-link" href="https://github.com/michaelcraft17" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+      <a class="pc-link" href="#contact">Get in touch ↗</a>
+    </div>
+
+    <div class="project-card">
+      <div class="pc-label">💬 Accessibility · AI · Hackathon</div>
+      <div class="pc-title">Nexus — Social Scenario Practice</div>
+      <div class="pc-desc">A judgment-free app where neurodivergent users practice everyday social situations while an AI plays the other person. Designed around understanding, not masking. Built for the IncludAI Neurodiversity Hackathon (Track 2: AI for Connection &amp; Wellbeing).</div>
+      <a class="pc-link" href="https://github.com/michaelcraft17/nexus-scenario-practice" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+    </div>
+
+    <div class="project-card">
+      <div class="pc-label">🌐 Chrome Extension · Translation</div>
+      <div class="pc-title">Live Translator for Google Docs</div>
+      <div class="pc-desc">Side-by-side live translation for any Google Doc in Chrome's side panel. Click a sentence in either pane and it is highlighted in both.</div>
+      <a class="pc-link" href="https://github.com/michaelcraft17/live-translator-for-google-docs" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
     </div>
 
     <div class="project-card">
@@ -610,28 +626,6 @@
 
   </div>
 
-  <!-- Media placeholder section -->
-  <div style="margin-top:48px;">
-    <div class="section-label" style="margin-bottom:10px;">Demo Reel & Gallery</div>
-    <p style="font-size:14px;color:var(--text-mute);margin-bottom:22px;">Videos and images coming soon — drop files into the repo to populate these slots.</p>
-    <div class="media-grid">
-      <div class="media-slot">
-        <div class="ms-icon">🎬</div>
-        <div class="ms-label">Project Demo Video</div>
-        <div class="ms-sub">Add video here</div>
-      </div>
-      <div class="media-slot">
-        <div class="ms-icon">📸</div>
-        <div class="ms-label">Robot Build Photos</div>
-        <div class="ms-sub">Add images here</div>
-      </div>
-      <div class="media-slot">
-        <div class="ms-icon">📊</div>
-        <div class="ms-label">Research Poster / Slides</div>
-        <div class="ms-sub">Add PDF or image here</div>
-      </div>
-    </div>
-  </div>
 </section>
 <hr class="divider"/>
 
